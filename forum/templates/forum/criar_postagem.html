@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Cadastrar Novo Tópico / Projeto no Fórum</h2>
+
+<div class="card">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Seu Nome / Autor:</label><br>
+            <input type="text" name="nome_autor" placeholder="Ex: Maria Silva" style="width:100%; padding: 8px;">
+        </p>
+        <p>
+            <label>Título do Tópico/Projeto:</label><br>
+            <input type="text" name="titulo" required placeholder="Ex: Representatividade das Mulheres no Campus Central" style="width:100%; padding: 8px;">
+        </p>
+        <p>
+            <label>Eixo do Estudo:</label><br>
+            <select name="eixo" style="width:100%; padding: 8px;">
+                <option value="Trajetória Histórica">Trajetória Histórica</option>
+                <option value="Geral">Outros / Geral</option>
+            </select>
+        </p>
+        <p>
+            <label>Conteúdo / Descrição do Projeto:</label><br>
+            <textarea name="conteudo" rows="6" required placeholder="Descreva o projeto ou o tema de discussão..." style="width:100%; padding: 8px;"></textarea>
+        </p>
+        <button type="submit" class="btn">Publicar Tópico</button>
+        <a href="{% url 'forum_lista' %}" style="margin-left: 10px; color: #666; text-decoration: none;">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

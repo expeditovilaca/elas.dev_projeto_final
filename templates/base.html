@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Elas.Dev</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f8f9fa; }
+        header { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 15px 30px; border-bottom: 2px solid #6f42c1; }
+        .logo { font-size: 20px; font-weight: bold; color: #198754; }
+        .logo span { color: #6f42c1; }
+        nav a { margin-left: 15px; text-decoration: none; color: #333; font-weight: bold; }
+        nav a:hover { color: #6f42c1; }
+        .container { max-width: 900px; margin: 30px auto; }
+        .card { background: white; padding: 20px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .btn { display: inline-block; padding: 8px 15px; background: #6f42c1; color: white; text-decoration: none; border-radius: 5px; }
+        footer { text-align: center; margin-top: 40px; font-size: 14px; color: #666; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">IFRN <span>Docência</span></div>
+        <nav>
+            <a href="{% url 'home' %}">Início</a>
+            <a href="{% url 'pesquisa' %}">Pesquisa</a>
+            <a href="{% url 'indicadores' %}">Indicadores</a>
+            <a href="{% url 'forum_lista' %}">Fórum</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2026 Elas.Dev representatividade feminina no ramo STEM</p>
+    </footer>
+</body>
+</html>

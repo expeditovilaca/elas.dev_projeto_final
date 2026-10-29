@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <h2>Fórum de Discussões</h2>
+    <a href="{% url 'criar_postagem' %}" class="btn">+ Nova Postagem</a>
+</div>
+
+{% for post in postagens %}
+    <div class="card">
+        <h3>{{ post.titulo }}</h3>
+        <p><small>Por: <strong>{{ post.nome_autor }}</strong> | Eixo: {{ post.eixo }}</small></p>
+        <p>{{ post.conteudo|truncatewords:30 }}</p>
+        <a href="{% url 'forum_detalhe' post.pk %}" class="btn">Ver Discussão</a>
+    </div>
+{% empty %}
+    <p>Nenhuma postagem cadastrada ainda. Seja o primeiro a publicar!</p>
+{% endfor %}
+{% endblock %}

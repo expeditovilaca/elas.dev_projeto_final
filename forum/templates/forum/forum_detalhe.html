@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <h2>{{ postagem.titulo }}</h2>
+    <p>{{ postagem.conteudo }}</p>
+</div>
+
+<h3>Comentários (Atividades)</h3>
+
+<!-- Formulário Básico para simular envio de comentário -->
+<div class="card">
+    <form method="POST">
+        {% csrf_token %}
+        <p><label>Seu Nome:</label><br><input type="text" name="nome_autor" style="width:100%;"></p>
+        <p><label>Comentário:</label><br><textarea name="texto" rows="3" style="width:100%;"></textarea></p>
+        <button type="submit" class="btn">Enviar Comentário</button>
+    </form>
+</div>
+
+<!-- Lista de comentários salvos -->
+{% for c in postagem.comentarios.all %}
+    <div class="card">
+        <p><strong>{{ c.nome_autor }}:</strong> {{ c.texto }}</p>
+    </div>
+{% empty %}
+    <p>Nenhum comentário enviado ainda.</p>
+{% endfor %}
+
+<a href="{% url 'forum_lista' %}">← Voltar para o Fórum</a>
+{% endblock %}
